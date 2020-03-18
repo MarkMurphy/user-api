@@ -6,27 +6,33 @@ import {
   Delete,
   Body,
   Param,
+  Query,
   Request,
+  UseInterceptors,
   ParseIntPipe,
   HttpException,
   ForbiddenException,
+  ClassSerializerInterceptor,
 } from '@nestjs/common';
+import { Auth } from '../auth/auth.decorator';
 import { User } from './user.entity';
 import { UserService } from './user.service';
+import { ListUsersParams } from './dto/list-users.dto';
 import { CreateUserParams } from './dto/create-user.dto';
 import { UpdateUserParams } from './dto/update-user.dto';
-import { Auth } from '../auth/auth.decorator';
+import { UserList } from './dto/user-list.dto';
 
 const ID = Param('id', ParseIntPipe);
 
+@UseInterceptors(ClassSerializerInterceptor)
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
   @Auth('admin')
-  async list() {
-    return await this.userService.listUsers();
+  async list(@Query() params: ListUsersParams): Promise<UserList> {
+    return await this.userService.listUsers(params);
   }
 
   @Post()

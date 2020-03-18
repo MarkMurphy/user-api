@@ -1,3 +1,4 @@
+import { Exclude, Expose } from 'class-transformer';
 import {
   Entity,
   Column,
@@ -9,6 +10,9 @@ import {
 
 @Entity()
 export class User {
+  @Expose()
+  readonly kind = this.constructor.name;
+
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -22,9 +26,11 @@ export class User {
   @Column()
   email: string;
 
+  @Exclude()
   password: string;
 
   @Column()
+  @Exclude()
   passwordHash: string;
 
   @Column({ default: false })

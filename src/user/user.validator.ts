@@ -6,6 +6,7 @@ import {
   MinLength,
   ValidatorConstraint,
   ValidatorConstraintInterface,
+  ValidationArguments,
   ValidationOptions,
 } from 'class-validator';
 import { User } from './user.entity';
@@ -41,6 +42,30 @@ export function IsUniqueEmail(validationOptions?: ValidationOptions) {
       options: validationOptions,
       constraints: [],
       validator: IsUniqueEmailConstraint,
+    });
+  };
+}
+
+const isBlank = value => [undefined, null, ''].some(x => x === value);
+
+export function IsMutuallyExclusive(
+  property: string,
+  validationOptions?: ValidationOptions,
+) {
+  return function(object: Record<string, any>, propertyName: string) {
+    registerDecorator({
+      name: 'isMutuallyExclusive',
+      target: object.constructor,
+      propertyName: propertyName,
+      constraints: [property],
+      options: validationOptions,
+      validator: {
+        validate(value: any, args: ValidationArguments) {
+          const [relatedPropertyName] = args.constraints;
+          const relatedValue = (args.object as any)[relatedPropertyName];
+          return isBlank(value) || isBlank(relatedValue);
+        },
+      },
     });
   };
 }
