@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
+import { Controller, Post, Body, HttpException } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginParams } from './dto/login.dto';
 
@@ -14,7 +14,7 @@ export class AuthController {
     );
 
     if (!user) {
-      throw new UnauthorizedException();
+      throw new HttpException('Invalid username or password', 401);
     }
 
     return this.authService.createToken(user);

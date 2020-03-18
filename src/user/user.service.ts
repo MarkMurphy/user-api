@@ -30,6 +30,11 @@ export class UserService {
   async createUser(params: Partial<User>): Promise<User> {
     const user = new User(params);
     user.passwordHash = await this.encryptPassword(params.password);
+
+    if (await this.shouldCreateAdmin()) {
+      user.admin = true;
+    }
+
     return this.repo.save(user);
   }
 
@@ -65,5 +70,18 @@ export class UserService {
     hash: string,
   ): Promise<boolean> {
     return bcrypt.compare(password, hash);
+  }
+
+  /**
+   * If the system is fresh, the first user created should be an admin.
+   */
+  private async shouldCreateAdmin(): Promise<boolean> {
+    const result = await this.repo
+      .createQueryBuilder('user')
+      .select('true')
+      .take(1)
+      .getRawOne();
+
+    return !result;
   }
 }
