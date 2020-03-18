@@ -19,6 +19,14 @@ export class UserService {
     return this.repo.findOne(id);
   }
 
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    return this.repo.findOne({
+      where: {
+        email: String(email).toLowerCase(),
+      },
+    });
+  }
+
   async createUser(params: Partial<User>): Promise<User> {
     const user = new User(params);
     user.passwordHash = await this.encryptPassword(params.password);
@@ -36,6 +44,14 @@ export class UserService {
 
   async deleteUser(id: number): Promise<void> {
     await this.repo.delete(id);
+  }
+
+  async getAdminCount(): Promise<number> {
+    return this.repo.count({
+      where: {
+        admin: true,
+      },
+    });
   }
 
   private readonly PASSWORD_HASH_SALT_ROUNDS = 10;
