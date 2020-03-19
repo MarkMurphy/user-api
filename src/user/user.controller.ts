@@ -13,6 +13,7 @@ import {
   HttpException,
   ForbiddenException,
   ClassSerializerInterceptor,
+  HttpCode,
 } from '@nestjs/common';
 import { Auth } from '../auth/auth.decorator';
 import { User } from './user.entity';
@@ -75,6 +76,7 @@ export class UserController {
 
   @Delete(':id')
   @Auth()
+  @HttpCode(204)
   async delete(@ID id: number, @Request() req): Promise<void> {
     const user = await this.getUserById(id);
 
@@ -92,7 +94,7 @@ export class UserController {
       }
     }
 
-    return this.userService.deleteUser(id);
+    await this.userService.deleteUser(id);
   }
 
   private async getUserById(id: number): Promise<User> {
