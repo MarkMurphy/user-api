@@ -64,7 +64,7 @@ export class UserService {
 
   async createUser(params: Partial<User>): Promise<User> {
     const user = new User(params);
-    user.passwordHash = await this.encryptPassword(params.password);
+    user.passwordHash = await this.hashPassword(params.password);
 
     if (await this.shouldCreateAdmin()) {
       user.admin = true;
@@ -75,7 +75,7 @@ export class UserService {
 
   async updateUser(id: number, params: Partial<User>): Promise<User> {
     if (params.password) {
-      params.passwordHash = await this.encryptPassword(params.password);
+      params.passwordHash = await this.hashPassword(params.password);
     }
 
     await this.repo.update(id, params);
@@ -96,7 +96,7 @@ export class UserService {
 
   private readonly PASSWORD_HASH_SALT_ROUNDS = 10;
 
-  public async encryptPassword(password: string): Promise<string> {
+  public async hashPassword(password: string): Promise<string> {
     return bcrypt.hash(password, this.PASSWORD_HASH_SALT_ROUNDS);
   }
 
