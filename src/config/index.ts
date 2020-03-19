@@ -10,7 +10,7 @@ export const env = (key: string, fallback?: any) => {
     }
 
     if (/^(true|false)$/i.test(value)) {
-      return Boolean(value);
+      return /true/i.test(value);
     }
 
     return value;
