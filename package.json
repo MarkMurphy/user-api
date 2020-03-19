@@ -5,6 +5,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
+    "postinstall": "[ \"$NODE_ENV\" != production ] && [ ! -f \".env\" ] && cp .env.template .env",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
