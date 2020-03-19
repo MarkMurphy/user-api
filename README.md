@@ -46,6 +46,14 @@ I've included a [Postman](https://www.postman.com/) collection and environment i
 
 I've added a bit of documentation to that as well so it should hopefully be pretty easy to find your way around the api endpints.
 
+#### Authentication
+
+All endpoints excepts for `POST /auth/token` and `POST /users` require authentication via a Bearer JWT access token.
+
+After you create the first user, you can obtain an access token by sending a POST request with your credentials to the `POST /auth/token` endpoint.
+
+If you're using Postman, it will automatically store the access token from the response in a variable and attach it to all endpoints requiring it via an Authorization header.
+
 ## Test
 
 Tests are a little light at the moment 🙉
