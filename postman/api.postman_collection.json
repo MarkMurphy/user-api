@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "035032ea-642d-4415-91dc-75331bd565ab",
-		"name": "curv-api",
+		"name": "user-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -31,7 +31,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"username\": \"test@example.com\",\n\t\"password\": \"secret\"\n}",
+							"raw": "{\n\t\"username\": \"test@example.com\",\n\t\"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,7 +89,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstName\": \"Mark\",\n\t\"lastName\": \"Murphy\",\n\t\"email\": \"test@example.com\",\n\t\"password\": \"secret\"\n}",
+							"raw": "{\n\t\"firstName\": \"Mark\",\n\t\"lastName\": \"Murphy\",\n\t\"email\": \"test@example.com\",\n\t\"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -209,21 +209,25 @@
 								{
 									"key": "first",
 									"value": "1",
+									"description": "Limit resuts to first n records",
 									"disabled": true
 								},
 								{
 									"key": "last",
 									"value": "2",
+									"description": "Limit results to last n records",
 									"disabled": true
 								},
 								{
 									"key": "before",
 									"value": "4",
+									"description": " The unique user identifier that you last saw,",
 									"disabled": true
 								},
 								{
 									"key": "after",
 									"value": "2",
+									"description": " The unique user identifier that you last saw,",
 									"disabled": true
 								}
 							]
@@ -254,11 +258,13 @@
 								{
 									"key": "before",
 									"value": "2020-03-15T19:40:02.174406Z",
+									"description": "ISO8601 Date Time",
 									"disabled": true
 								},
 								{
 									"key": "after",
 									"value": "2020-03-15T19:41:02.174406Z",
+									"description": "ISO8601 Date Time",
 									"disabled": true
 								}
 							]

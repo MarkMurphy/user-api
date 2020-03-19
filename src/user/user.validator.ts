@@ -11,7 +11,7 @@ import {
 } from 'class-validator';
 import { User } from './user.entity';
 
-export const PASSWORD_MIN_LENGTH = 6;
+export const PASSWORD_MIN_LENGTH = 8;
 
 export function IsValidPassword() {
   return applyDecorators(IsNotEmpty(), MinLength(PASSWORD_MIN_LENGTH));
