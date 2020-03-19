@@ -1,12 +1,3 @@
-## Description
-
-I took a bit of a risk with this project becasue I wanted to explore
-some new tech I've had my eye on ([Nest](https://github.com/nestjs/nest) and
-[TypeORM](https://typeorm.io/)) and I wanted to showcase my ability to learn
-quickly and hopfully deliver something half decent in a short period of time.
-
-I took this as an oportunity to experiment which I very much enjoy. I have a lot of thoughts about how this project went, where I feel like it came up a bit short and where I'd go with it next. Looking forward to having conversations about that!
-
 ## Installation
 
 You can either install node and yarn on your machine locally to run this or you can use Docker. Either way, you'll need docker in order to supply the database.

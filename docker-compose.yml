@@ -18,7 +18,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: curv_development
+      POSTGRES_DB: development
       POSTGRES_USER: developer
       POSTGRES_PASSWORD: secret
     volumes:
