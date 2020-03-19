@@ -1,8 +1,8 @@
 ## Description
 
-I took a bit of a risk with this project becasue I wanted to explore 
-some new tech I've had my eye on ([Nest](https://github.com/nestjs/nest) and 
-[TypeORM](https://typeorm.io/)) and I wanted to showcase my ability to learn 
+I took a bit of a risk with this project becasue I wanted to explore
+some new tech I've had my eye on ([Nest](https://github.com/nestjs/nest) and
+[TypeORM](https://typeorm.io/)) and I wanted to showcase my ability to learn
 quickly and hopfully deliver something half decent in a short period of time.
 
 I took this as an oportunity to experiment which I very much enjoy. I have a lot of thoughts about how this project went, where I feel like it came up a bit short and where I'd go with it next. Looking forward to having conversations about that!
@@ -44,7 +44,7 @@ docker-compose up
 
 I've included a [Postman](https://www.postman.com/) collection and environment in the `postman` directory at the root of the project that you can [import](https://learning.postman.com/docs/postman/collections/data-formats/#importing-postman-data) to easily get started testing out the different api endpoints.
 
-I've added a bit of documentation to that as well so it should hopefully be pretty easy to find your way around the api endpints.
+I've added a bit of documentation to that as well so it should hopefully be pretty easy to find your way around the api endpoints.
 
 #### Authentication
 
