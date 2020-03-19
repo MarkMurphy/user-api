@@ -1,25 +1,28 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+I took a bit of a risk with this project becasue I wanted to explore 
+some new tech I've had my eye on ([Nest](https://github.com/nestjs/nest) and 
+[TypeORM](https://typeorm.io/)) and I wanted to showcase my ability to learn 
+quickly and hopfully deliver something half decent in a short period of time.
+
+I took this as an oportunity to experiment which I very much enjoy. I have a lot of thoughts about how this project went, where I feel like it came up a bit short and where I'd go with it next. Looking forward to having conversations about that!
 
 ## Installation
+
+You can either install node and yarn on your machine locally to run this or you can use Docker. Either way, you'll need docker in order to supply the database.
+
+#### Local
+
+If you already have node (v12+) and yarn installed on your machine:
 
 ```bash
 yarn install
 ```
 
-## Running the app
-
-I've included a [Postman](https://www.postman.com/) collection and environment in the `postman` directory at the root of the project that you can [import](https://learning.postman.com/docs/postman/collections/data-formats/#importing-postman-data) to easily get started testing out the different api endpoints.
-
 Make sure there's a database to connect to:
 
 ```bash
-docker-compose up --build
+docker-compose up db
 ```
 
 In a seperate terminal tab or window, start the server:
@@ -28,7 +31,24 @@ In a seperate terminal tab or window, start the server:
 yarn start
 ```
 
+#### Docker
+
+If you'd like to run a build of the app without having to install node or any of
+the project dependencies on your machine you can just:
+
+```bash
+docker-compose up
+```
+
+## Usage
+
+I've included a [Postman](https://www.postman.com/) collection and environment in the `postman` directory at the root of the project that you can [import](https://learning.postman.com/docs/postman/collections/data-formats/#importing-postman-data) to easily get started testing out the different api endpoints.
+
+I've added a bit of documentation to that as well so it should hopefully be pretty easy to find your way around the api endpints.
+
 ## Test
+
+Tests are a little light at the moment 🙉
 
 ```bash
 # unit tests
