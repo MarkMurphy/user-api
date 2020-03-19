@@ -17,4 +17,8 @@ export class UpdateUserParams {
   @IsOptional()
   @IsBoolean()
   admin?: boolean;
+
+  constructor(partial?: Partial<UpdateUserParams>) {
+    Object.assign(this, partial);
+  }
 }

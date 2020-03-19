@@ -2,8 +2,8 @@ import { User } from '../user.entity';
 
 export class List<T> {
   readonly kind = 'List';
-  hasNextPage: boolean;
-  data: T[];
+  hasNextPage = false;
+  data: T[] = [];
   constructor(partial?: Partial<List<T>>) {
     Object.assign(this, partial);
   }

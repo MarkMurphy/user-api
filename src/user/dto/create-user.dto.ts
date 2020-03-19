@@ -15,4 +15,8 @@ export class CreateUserParams {
 
   @IsValidPassword()
   password: string;
+
+  constructor(partial?: Partial<CreateUserParams>) {
+    Object.assign(this, partial);
+  }
 }
