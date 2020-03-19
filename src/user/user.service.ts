@@ -22,24 +22,24 @@ export class UserService {
       if (after) return 'user.id > :after';
     };
 
-    const data = await this.repo
-      .createQueryBuilder('user')
-      .where(query => {
-        return `user.id IN ${query
+    const data = await this.repo.find({
+      where: query => {
+        return `id IN ${query
           .subQuery()
-          .select('user.id')
+          .select('id')
           .from(User, 'user')
           .where(where)
-          .orderBy('user.id', last ? 'DESC' : 'ASC')
+          .orderBy('id', last ? 'DESC' : 'ASC')
           .take(take)
+          .setParameters({
+            before,
+            after,
+          })
           .getQuery()}`;
-      })
-      .orderBy('user.id', 'ASC')
-      .setParameters({
-        before,
-        after,
-      })
-      .getMany();
+      },
+      order: { id: last ? 'DESC' : 'ASC' },
+      take,
+    });
 
     const count = data.length;
     const next = count === take ? (last ? data.shift() : data.pop()) : null;
@@ -110,7 +110,7 @@ export class UserService {
   /**
    * If the system is fresh, the first user created should be an admin.
    */
-  private async shouldCreateAdmin(): Promise<boolean> {
+  async shouldCreateAdmin(): Promise<boolean> {
     const result = await this.repo
       .createQueryBuilder('user')
       .select('true')

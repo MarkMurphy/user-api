@@ -31,7 +31,7 @@ export class UserController {
 
   @Get()
   @Auth('admin')
-  async list(@Query() params: ListUsersParams): Promise<UserList> {
+  async list(@Query() params?: ListUsersParams): Promise<UserList> {
     return await this.userService.listUsers(params);
   }
 
