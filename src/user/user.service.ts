@@ -37,7 +37,7 @@ export class UserService {
           })
           .getQuery()}`;
       },
-      order: { id: last ? 'DESC' : 'ASC' },
+      order: { id: 'ASC' },
       take,
     });
 
