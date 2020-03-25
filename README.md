@@ -24,8 +24,17 @@ yarn start
 
 #### Docker
 
-If you'd like to run a build of the app without having to install node or any of
-the project dependencies on your machine you can just:
+If you'd like to run a build of the app without having to install Node or any of
+the project dependencies, you can do so using Docker.
+
+First, make sure you have a `.env` file in the project root and ensure it has all the same environment variables that `.env.template` has. If you don't have this already you can run the
+following command from the project root:
+
+```bash
+cp .env.template .env
+```
+
+Next, bring up the web and db docker containers and you're good to go.
 
 ```bash
 docker-compose up
